@@ -11,6 +11,7 @@ import javax.persistence.Converter;
  * Extension JPA pour stocker des dates (de congés pris... uniques dans le set, ordonnées) sous forme de String.
  * NB. évite du paramétrage JPA qui n'est pas dans les prérequis du cours.
  */
+//Annotation Converter added
 @Converter
 public class LinkedHashSetStringConverter implements AttributeConverter<LinkedHashSet<LocalDate>, String> {
 
