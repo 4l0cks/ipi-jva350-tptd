@@ -147,8 +147,10 @@ public final class Entreprise {
      * @return
      */
     public static boolean estDansPlage(LocalDate d, LocalDate debut, LocalDate fin) {
-        // à implémenter en TDD !
-        throw new RuntimeException("à implémenter en TDD !");
+        if (d == null || debut == null || fin == null) {
+            throw new IllegalArgumentException("Dates cannot be null");
+        }
+        return !d.isBefore(debut) && !d.isAfter(fin);
     }
 
 }

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -15,10 +16,22 @@ import static org.mockito.Mockito.*;
 class SalarieAideADomicileServiceTest {
     private SalarieAideADomicileService service;
     private SalarieAideADomicileRepository repository;
+    private SalarieAideADomicile salarie;
     @BeforeEach
     void setUp() {
         repository = mock(SalarieAideADomicileRepository.class);
         service = new SalarieAideADomicileService(repository);
+        salarie = new SalarieAideADomicile();
+        salarie.setId(1L);
+        salarie.setNom("Dupont");
+        salarie.setMoisDebutContrat(LocalDate.of(2023, 1, 1));
+        salarie.setMoisEnCours(LocalDate.of(2023, 6, 1));
+        salarie.setJoursTravaillesAnneeN(20);
+        salarie.setJoursTravaillesAnneeNMoins1(15);
+        salarie.setCongesPayesAcquisAnneeN(10);
+        salarie.setCongesPayesAcquisAnneeNMoins1(5);
+        salarie.setCongesPayesPrisAnneeNMoins1(0);
+        salarie.setCongesPayesPris(new LinkedHashSet<>());
     }
 
     @Test

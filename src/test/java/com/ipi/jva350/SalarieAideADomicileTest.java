@@ -25,13 +25,12 @@ class SalarieAideADomicileTest {
     @Mock
     private SalarieAideADomicileRepository salarieAideADomicileRepository;
 
-    @InjectMocks
-    private SalarieAideADomicileService salarieAideADomicileService;
+    private SalarieAideADomicile salarie;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        SalarieAideADomicile salarie = new SalarieAideADomicile();
+        salarie = new SalarieAideADomicile();
         salarie.setId(1L);
         salarie.setNom("Dupont");
         salarie.setMoisDebutContrat(LocalDate.of(2023, 1, 1));
@@ -43,6 +42,21 @@ class SalarieAideADomicileTest {
         salarie.setCongesPayesPrisAnneeNMoins1(0);
         salarie.setCongesPayesPris(new LinkedHashSet<>());
         when(salarieAideADomicileRepository.findById(1L)).thenReturn(Optional.of(salarie));
+    }
+
+
+    @Test
+    void testSalarieInitialization() {
+        assertEquals(1L, salarie.getId());
+        assertEquals("Dupont", salarie.getNom());
+        assertEquals(LocalDate.of(2023, 1, 1), salarie.getMoisDebutContrat());
+        assertEquals(LocalDate.of(2023, 1, 1), salarie.getMoisEnCours());
+        assertEquals(20, salarie.getJoursTravaillesAnneeN());
+        assertEquals(15, salarie.getJoursTravaillesAnneeNMoins1());
+        assertEquals(10, salarie.getCongesPayesAcquisAnneeN());
+        assertEquals(5, salarie.getCongesPayesAcquisAnneeNMoins1());
+        assertEquals(0, salarie.getCongesPayesPrisAnneeNMoins1());
+        assertTrue(salarie.getCongesPayesPris().isEmpty());
     }
 
     @Test
