@@ -20,7 +20,9 @@ public class SalarieAideADomicileService {
     @Autowired
     private SalarieAideADomicileRepository salarieAideADomicileRepository;
 
-    public SalarieAideADomicileService() {
+    @Autowired
+    public SalarieAideADomicileService(SalarieAideADomicileRepository repository) {
+        this.salarieAideADomicileRepository = repository;
     }
 
     /**
@@ -111,7 +113,7 @@ public class SalarieAideADomicileService {
         LinkedHashSet<LocalDate> joursDecomptes = salarieAideADomicile
                 .calculeJoursDeCongeDecomptesPourPlage(jourDebut, jourFin);
 
-        if (joursDecomptes.size() == 0) {
+        if (joursDecomptes.isEmpty()) {
             throw new SalarieException("Pas besoin de congés !");
         }
 
