@@ -1,15 +1,12 @@
 package com.ipi.jva350;
 
-import com.ipi.jva350.exception.SalarieException;
 import com.ipi.jva350.model.SalarieAideADomicile;
 import com.ipi.jva350.repository.SalarieAideADomicileRepository;
-import com.ipi.jva350.service.SalarieAideADomicileService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -61,15 +58,15 @@ class SalarieAideADomicileTest {
 
     @Test
     void aLegalementDroitADesCongesPayesTest() {
-        SalarieAideADomicile salarie = new SalarieAideADomicile("Dupont",LocalDate.of(2023, 1, 1), LocalDate.of(2024, 1, 1), 15, 0, 11, 0, 0);
-        boolean result = salarie.aLegalementDroitADesCongesPayes();
+        SalarieAideADomicile salarie1 = new SalarieAideADomicile("Dupont",LocalDate.of(2023, 1, 1), LocalDate.of(2024, 1, 1), 15, 0, 11, 0, 0);
+        boolean result = salarie1.aLegalementDroitADesCongesPayes();
         assertTrue(result);
     }
 
     @Test
     void aPasDroitADesCongesPayesTest() {
-        SalarieAideADomicile salarie = new SalarieAideADomicile("Dupont",LocalDate.of(2023, 1, 1), LocalDate.of(2024, 1, 1), 9, 0, 0, 0, 0);
-        boolean result = salarie.aLegalementDroitADesCongesPayes();
+        SalarieAideADomicile salarie2 = new SalarieAideADomicile("Dupont",LocalDate.of(2023, 1, 1), LocalDate.of(2024, 1, 1), 9, 0, 0, 0, 0);
+        boolean result = salarie2.aLegalementDroitADesCongesPayes();
         assertFalse(result);
     }
 
@@ -86,6 +83,4 @@ class SalarieAideADomicileTest {
         LinkedHashSet<LocalDate> result = salarie.calculeJoursDeCongeDecomptesPourPlage(dateDebut, dateFin);
         assertEquals(expectedSize, result.size());
     }
-
-
 }

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -16,12 +15,12 @@ import static org.mockito.Mockito.*;
 class SalarieAideADomicileServiceTest {
     private SalarieAideADomicileService service;
     private SalarieAideADomicileRepository repository;
-    private SalarieAideADomicile salarie;
+
     @BeforeEach
     void setUp() {
         repository = mock(SalarieAideADomicileRepository.class);
         service = new SalarieAideADomicileService(repository);
-        salarie = new SalarieAideADomicile();
+        SalarieAideADomicile salarie = new SalarieAideADomicile();
         salarie.setId(1L);
         salarie.setNom("Dupont");
         salarie.setMoisDebutContrat(LocalDate.of(2023, 1, 1));
@@ -36,11 +35,11 @@ class SalarieAideADomicileServiceTest {
 
     @Test
     void creerSalarieAideADomicileTest() throws SalarieException {
-        SalarieAideADomicile salarie = new SalarieAideADomicile();
-        salarie.setNom("John Doe");
+        SalarieAideADomicile salarie1 = new SalarieAideADomicile();
+        salarie1.setNom("John Doe");
         when(repository.findByNom("John Doe")).thenReturn(null);
-        service.creerSalarieAideADomicile(salarie);
-        verify(repository).save(salarie);
+        service.creerSalarieAideADomicile(salarie1);
+        verify(repository).save(salarie1);
     }
 
     @Test
@@ -58,10 +57,10 @@ class SalarieAideADomicileServiceTest {
 
     @Test
     void clotureMoisTest() throws SalarieException {
-        SalarieAideADomicile salarie = new SalarieAideADomicile();
-        salarie.setMoisEnCours(LocalDate.of(2023, 5, 1));
-        service.clotureMois(salarie, 20);
-        assertEquals(LocalDate.of(2023, 6, 1), salarie.getMoisEnCours());
+        SalarieAideADomicile salarie2 = new SalarieAideADomicile();
+        salarie2.setMoisEnCours(LocalDate.of(2023, 5, 1));
+        service.clotureMois(salarie2, 20);
+        assertEquals(LocalDate.of(2023, 6, 1), salarie2.getMoisEnCours());
     }
 
     @Test

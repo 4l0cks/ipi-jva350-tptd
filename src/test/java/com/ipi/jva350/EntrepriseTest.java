@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class EntrepriseTest {
+class EntrepriseTest {
     @Test
     void testEstDansPlage() {
         LocalDate date = LocalDate.of(2023, 6, 15);
