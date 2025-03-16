@@ -79,8 +79,8 @@ class SalarieAideADomicileTest {
     })
     @DisplayName("Test calculeJoursDeCongeDecomptesPourPlage with various date ranges")
     void testCalculeJoursDeCongeDecomptesPourPlage(LocalDate dateDebut, LocalDate dateFin, int expectedSize) {
-        SalarieAideADomicile salarie = new SalarieAideADomicile();
-        LinkedHashSet<LocalDate> result = salarie.calculeJoursDeCongeDecomptesPourPlage(dateDebut, dateFin);
+        SalarieAideADomicile salarieTest = new SalarieAideADomicile();
+        LinkedHashSet<LocalDate> result = salarieTest.calculeJoursDeCongeDecomptesPourPlage(dateDebut, dateFin);
         assertEquals(expectedSize, result.size());
     }
 }

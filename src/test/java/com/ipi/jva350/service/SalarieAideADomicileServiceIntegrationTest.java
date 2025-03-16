@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Transactional
-public class SalarieAideADomicileServiceIntegrationTest {
+class SalarieAideADomicileServiceIntegrationTest {
 
     @Autowired
     private SalarieAideADomicileService salarieAideADomicileService;
